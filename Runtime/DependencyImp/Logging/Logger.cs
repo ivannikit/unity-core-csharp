@@ -7,7 +7,7 @@ using System.Diagnostics;
 
 namespace TeamZero.Core.Logging
 {
-	public sealed class Logger
+	public sealed class TZLogger
 	{
 		public ILogListener Listener => _listener;
 		private readonly ILogListener _listener;
@@ -15,7 +15,7 @@ namespace TeamZero.Core.Logging
 		public ILogFilter Filter => _filter;
 		private readonly ILogFilter _filter;
 
-		public Logger([NotNull] ILogListener listener, [NotNull] ILogFilter filter)
+		public TZLogger([NotNull] ILogListener listener, [NotNull] ILogFilter filter)
         {
          	_listener = listener ?? throw new ArgumentNullException(nameof(listener));
          	_filter = filter ?? throw new ArgumentNullException(nameof(filter));
@@ -24,7 +24,7 @@ namespace TeamZero.Core.Logging
 #if DISABLE_INFO_LOG
 		[Conditional("__NEVER_DEFINED__")]
 #endif
-		public void Info(string message)
+		public void  Info(string message)
 		{
 			if(_filter.IsInfo()) 
 				_listener.Info(message);
@@ -53,7 +53,7 @@ namespace TeamZero.Core.Logging
 #if DISABLE_EXCEPTION_LOG
 		[Conditional("__NEVER_DEFINED__")]
 #endif
-		public void Exception(Exception e)
+		public void Throw(Exception e)
 		{
 			if(_filter.IsException()) 
 				_listener.Exception(e);
@@ -61,8 +61,8 @@ namespace TeamZero.Core.Logging
 		
 		#region Default
 		
-		private static Logger _default;
-		public static Logger Default
+		private static TZLogger _default;
+		public static TZLogger Default
 		{
 			get
 			{
@@ -70,7 +70,7 @@ namespace TeamZero.Core.Logging
 				{
 					ILogListener listener = GetDefaultListener();
 					ILogFilter filter = GetDefaultFilter();
-					_default = new Logger(listener, filter);
+					_default = new TZLogger(listener, filter);
 				}
 
 				return _default;
