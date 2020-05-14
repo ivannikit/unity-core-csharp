@@ -1,4 +1,6 @@
-﻿namespace TeamZero.Core.Logging
+﻿using System;
+
+namespace TeamZero.Core.Logging
 {
     public interface ILogListener
     {
@@ -7,5 +9,7 @@
         void Warning(string message);
 
         void Error(string message);
+        
+        void Exception(Exception e);
     }
 }

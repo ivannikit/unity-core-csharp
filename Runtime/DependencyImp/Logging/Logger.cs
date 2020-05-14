@@ -50,6 +50,14 @@ namespace TeamZero.Core.Logging
 				_listener.Error(message);
 		}
 
+#if DISABLE_EXCEPTION_LOG
+		[Conditional("__NEVER_DEFINED__")]
+#endif
+		public void Exception(Exception e)
+		{
+			if(_filter.IsException()) 
+				_listener.Exception(e);
+		}
 		
 		#region Default
 		
@@ -85,7 +93,8 @@ namespace TeamZero.Core.Logging
 #endif
 		}
 
-		public static ILogFilter GetDefaultFilter(bool info = true, bool warning = true, bool error = true) => new LogFilter(info, warning, error);
+		public static ILogFilter GetDefaultFilter(bool info = true, bool warning = true, bool error = true, bool exception = true) => 
+			new LogFilter(info, warning, error, exception);
 		
 		#endregion
 	}

@@ -7,5 +7,7 @@
         bool IsWarning();
 
         bool IsError();
+        
+        bool IsException();
     }
 }
