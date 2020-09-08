@@ -12,11 +12,11 @@ namespace TeamZero.Core.Ads
         bool IsAvailableRewardedAd();
     }
 
+    public delegate void AdLoadingResult();
     public interface IAdProvider
     {
         bool IsLoaded();
-        void Load();
-        event Action OnEndLoad;
+        void Load(AdLoadingResult result);
     }
     
     public interface IAdBannerProvider : IAdProvider
@@ -28,15 +28,12 @@ namespace TeamZero.Core.Ads
     public delegate void InterstitialResult();
     public interface IAdInterstitialProvider : IAdProvider
     {
-        event Action OnEndAd;
-        bool ShowInterstitialAd();
+        void ShowInterstitialAd(InterstitialResult result = null);
     }
     
     public delegate void RewardedResult(bool watched);
     public interface IAdRewardedProvider : IAdProvider
     {
-        event Action OnEndAd;
-        event Action OnWatchedAd;
-        bool ShowRewardedAd();
+        void ShowRewardedAd(RewardedResult result);
     }
 }
