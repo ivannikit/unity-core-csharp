@@ -1,10 +1,8 @@
 ﻿#if UNITY_EDITOR || UNITY_STANDALONE || UNITY_IOS || UNITY_ANDROID
 using System;
-using TeamZero.Core.Logging;
-
-namespace TeamZero.Core.Unity.Logging
+namespace TeamZero.Core.Logging
 {
-	public sealed class UnityConsolePublisher : ILogListener 
+	public sealed class UnityConsoleTarget : ILogTarget 
 	{
 		public void Info(string message)
 		{
@@ -21,7 +19,7 @@ namespace TeamZero.Core.Unity.Logging
 			UnityEngine.Debug.LogError(message);
 		}
 
-		public void Exception(Exception e)
+		public void Error(Exception e)
 		{
 			throw e;
 		}

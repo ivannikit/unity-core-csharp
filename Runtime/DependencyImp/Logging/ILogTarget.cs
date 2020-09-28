@@ -2,7 +2,7 @@
 
 namespace TeamZero.Core.Logging
 {
-    public interface ILogListener
+    public interface ILogTarget
     {
         void Info(string message);
 
@@ -10,6 +10,6 @@ namespace TeamZero.Core.Logging
 
         void Error(string message);
         
-        void Exception(Exception e);
+        void Error(Exception e);
     }
 }
