@@ -4,36 +4,36 @@ namespace TeamZero.Core.Ads
 {
     public interface IAdNetwork
     {
-        string GetName();
-        string GetId();
+        string Name();
+        string Id();
 
         bool IsAvailableBanner();
         bool IsAvailableInterstitial();
         bool IsAvailableRewardedAd();
     }
 
-    public delegate void AdLoadingResult();
-    public interface IAdProvider
+    public delegate void LoadingResult();
+    public interface IAdvertising
     {
         bool IsLoaded();
-        void Load(AdLoadingResult result);
+        void Load(LoadingResult result = null);
     }
     
-    public interface IAdBannerProvider : IAdProvider
+    public interface IAdBanner : IAdvertising
     {
-        void ShowBannerAd();
-        void HideBannerAd();
+        void Show();
+        void Hide();
     }
 
     public delegate void InterstitialResult();
-    public interface IAdInterstitialProvider : IAdProvider
+    public interface IAdInterstitial : IAdvertising
     {
-        void ShowInterstitialAd(InterstitialResult result = null);
+        void Show(InterstitialResult result = null);
     }
     
     public delegate void RewardedResult(bool watched);
-    public interface IAdRewardedProvider : IAdProvider
+    public interface IAdRewardedVideo : IAdvertising
     {
-        void ShowRewardedAd(RewardedResult result);
+        void Show(RewardedResult result);
     }
 }
