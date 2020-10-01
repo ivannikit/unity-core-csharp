@@ -7,7 +7,7 @@ using System.Diagnostics;
 
 namespace TeamZero.Core.Logging
 {
-	public sealed class Log
+	public sealed class Log : ILogTarget, ILogFilter
 	{
 		private readonly ILogTarget _target;
 		private readonly ILogFilter _filter;
@@ -18,12 +18,20 @@ namespace TeamZero.Core.Logging
          	_filter = filter ?? throw new ArgumentNullException(nameof(filter));
         }
 
+
+		public bool InfoEnabled() => _filter.InfoEnabled();
+
+		public bool WarningEnabled() => _filter.WarningEnabled();
+
+		public bool ErrorEnabled() => _filter.ErrorEnabled();
+
+		
 #if DISABLE_INFO_LOG
 		[Conditional("__NEVER_DEFINED__")]
 #endif
 		public void Info(string message)
 		{
-			if(_filter.IsLogInfo()) 
+			if(InfoEnabled()) 
 				_target.Info(message);
 		}
 		
@@ -33,7 +41,7 @@ namespace TeamZero.Core.Logging
 #endif
 		public void Warning(string message)
 		{
-			if(_filter.IsLogWarning()) 
+			if(WarningEnabled()) 
 				_target.Warning(message);
 		}		
  
@@ -43,7 +51,7 @@ namespace TeamZero.Core.Logging
 #endif
 		public void Error(string message)
 		{
-			if(_filter.IsLogError()) 
+			if(ErrorEnabled()) 
 				_target.Error(message);
 		}
 
@@ -52,7 +60,7 @@ namespace TeamZero.Core.Logging
 #endif
 		public void Error(Exception e)
 		{
-			if(_filter.IsLogError()) 
+			if(ErrorEnabled()) 
 				_target.Error(e);
 		}
 		

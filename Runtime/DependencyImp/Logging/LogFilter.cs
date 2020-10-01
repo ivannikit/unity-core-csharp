@@ -13,10 +13,10 @@
             _logError = error;
         }
 
-        public bool IsLogInfo() => _logInfo;
+        public bool InfoEnabled() => _logInfo;
 
-        public bool IsLogWarning() => _logWarning;
+        public bool WarningEnabled() => _logWarning;
 
-        public bool IsLogError() => _logError;
+        public bool ErrorEnabled() => _logError;
     }
 }

@@ -2,10 +2,10 @@
 {
     public interface ILogFilter
     {
-        bool IsLogInfo();
+        bool InfoEnabled();
 
-        bool IsLogWarning();
+        bool WarningEnabled();
 
-        bool IsLogError();
+        bool ErrorEnabled();
     }
 }
