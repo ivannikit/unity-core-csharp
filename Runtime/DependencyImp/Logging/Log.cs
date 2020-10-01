@@ -66,8 +66,8 @@ namespace TeamZero.Core.Logging
 			{
 				if (_main == null)
 				{
-					ILogTarget listener = GetDefaultTarget();
-					ILogFilter filter = GetDefaultFilter();
+					ILogTarget listener = DefaultTarget();
+					ILogFilter filter = DefaultFilter();
 					_main = new Log(listener, filter);
 				}
 
@@ -82,7 +82,7 @@ namespace TeamZero.Core.Logging
 			}
 		}
 		
-		public static ILogTarget GetDefaultTarget()
+		public static ILogTarget DefaultTarget()
 		{
 #if UNITY_EDITOR || UNITY_STANDALONE || UNITY_IOS || UNITY_ANDROID
 			return new UnityConsoleTarget();
@@ -91,7 +91,7 @@ namespace TeamZero.Core.Logging
 #endif
 		}
 
-		public static ILogFilter GetDefaultFilter(bool info = true, bool warning = true, bool error = true) => 
+		public static ILogFilter DefaultFilter(bool info = true, bool warning = true, bool error = true) => 
 			new LogFilter(info, warning, error);
 		
 		#endregion
