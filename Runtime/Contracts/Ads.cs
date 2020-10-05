@@ -6,10 +6,6 @@ namespace TeamZero.Core.Ads
     {
         string Name();
         string Id();
-
-        bool IsAvailableBanner();
-        bool IsAvailableInterstitial();
-        bool IsAvailableRewardedAd();
     }
 
     public delegate void LoadingResult();
