@@ -7,7 +7,7 @@ using System.Diagnostics;
 
 namespace TeamZero.Core.Logging
 {
-	public sealed class Log : ILogTarget, ILogFilter
+	public sealed class Log : ILogFilter
 	{
 		private readonly ILogTarget _target;
 		private readonly ILogFilter _filter;
@@ -92,7 +92,7 @@ namespace TeamZero.Core.Logging
 		
 		public static ILogTarget DefaultTarget()
 		{
-#if UNITY_EDITOR || UNITY_STANDALONE || UNITY_IOS || UNITY_ANDROID
+#if UNITY_5_3_OR_NEWER //if Unity Engine
 			return new UnityConsoleTarget();
 #else
 			throw new NotImplementedException();

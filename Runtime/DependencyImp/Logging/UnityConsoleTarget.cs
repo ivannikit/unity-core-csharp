@@ -1,4 +1,4 @@
-﻿#if UNITY_EDITOR || UNITY_STANDALONE || UNITY_IOS || UNITY_ANDROID
+﻿#if UNITY_5_3_OR_NEWER
 using System;
 namespace TeamZero.Core.Logging
 {
