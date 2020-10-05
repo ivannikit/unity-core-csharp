@@ -19,11 +19,32 @@ namespace TeamZero.Core.Logging
         }
 
 
-		public bool InfoEnabled() => _filter.InfoEnabled();
+		public bool InfoEnabled()
+		{
+#if DISABLE_INFO_LOG
+			return false;
+#else
+			return _filter.InfoEnabled();
+#endif
+		}
 
-		public bool WarningEnabled() => _filter.WarningEnabled();
+		public bool WarningEnabled()
+		{
+#if DISABLE_WARNING_LOG
+			return false;
+#else
+			return _filter.WarningEnabled();
+#endif
+		}
 
-		public bool ErrorEnabled() => _filter.ErrorEnabled();
+		public bool ErrorEnabled() 
+		{
+#if DISABLE_ERROR_LOG
+			return false;
+#else
+			return _filter.ErrorEnabled();
+#endif
+		}
 
 		
 #if DISABLE_INFO_LOG
