@@ -57,6 +57,16 @@ namespace TeamZero.Core.Logging
 		}
 		
 		
+#if DISABLE_INFO_LOG
+		[Conditional("__NEVER_DEFINED__")]
+#endif
+		public void Info(object o)
+		{
+			if(InfoEnabled()) 
+				_target.Info(o.ToString());
+		}
+		
+		
 #if DISABLE_WARNING_LOG
 		[Conditional("__NEVER_DEFINED__")]
 #endif
@@ -64,7 +74,17 @@ namespace TeamZero.Core.Logging
 		{
 			if(WarningEnabled()) 
 				_target.Warning(message);
-		}		
+		}
+		
+		
+#if DISABLE_WARNING_LOG
+		[Conditional("__NEVER_DEFINED__")]
+#endif
+		public void Warning(object o)
+		{
+			if(WarningEnabled()) 
+				_target.Warning(o.ToString());
+		}
  
 		
 #if DISABLE_ERROR_LOG
@@ -75,7 +95,18 @@ namespace TeamZero.Core.Logging
 			if(ErrorEnabled()) 
 				_target.Error(message);
 		}
+		
+		
+#if DISABLE_ERROR_LOG
+		[Conditional("__NEVER_DEFINED__")]
+#endif
+		public void Error(object o)
+		{
+			if(ErrorEnabled()) 
+				_target.Error(o.ToString());
+		}
 
+		
 #if DISABLE_ERROR_LOG
 		[Conditional("__NEVER_DEFINED__")]
 #endif
