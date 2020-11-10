@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Toolbox
 {
-    public static partial class Help
+    public static class EnumExtensions
     {
         public static IEnumerable<T> GetEnumValues<T>()
         {
