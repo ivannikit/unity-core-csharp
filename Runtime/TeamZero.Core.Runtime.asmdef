@@ -1,3 +1,15 @@
-﻿{
-	"name": "TeamZero.Core.Runtime"
+{
+    "name": "TeamZero.Core.Runtime",
+    "references": [
+        "GUID:4f4fdddf5b948314fa3aef8a29f31242"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
 }
