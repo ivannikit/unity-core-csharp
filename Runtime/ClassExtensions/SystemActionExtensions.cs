@@ -1,5 +1,4 @@
 ﻿using System;
-using TeamZero.Core.Logging;
 
 namespace TeamZero.Core
 {
