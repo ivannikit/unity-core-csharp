@@ -1,0 +1,14 @@
+{
+  "name": "com.teamzero.core-csharp",
+  "displayName": "TeamZero Core C#",
+  "version": "1.0.0",
+  "unity": "2019.3",
+  "description": "TeamZero core C# module",
+  "keywords": [
+    "TeamZero"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab.com:team_z/tools/core-csharp.git#master"
+  }
+}
