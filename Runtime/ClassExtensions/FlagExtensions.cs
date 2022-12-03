@@ -1,4 +1,4 @@
-﻿namespace Toolbox
+﻿namespace TeamZero
 {
     public static class FlagExtensions
     {

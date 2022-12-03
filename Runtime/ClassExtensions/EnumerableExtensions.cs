@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 
-namespace Toolbox
+namespace TeamZero
 {
     public static class EnumerableExtensions
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 
-namespace Toolbox
+namespace TeamZero
 {
     public static class StringExtensions
     {

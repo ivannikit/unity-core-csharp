@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Toolbox
+namespace TeamZero
 {
     public static class EnumExtensions
     {
